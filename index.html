@@ -3,151 +3,178 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo Gabiroba</title>
+  <title>Gabiroba Materiais de Construção</title>
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Segoe UI", Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: #000;
       color: #fff;
-      margin: 0;
+      line-height: 1.4;
     }
 
-header {
-  position: relative;
-  color: #000;
-  text-align: center;
-  padding: 100px 20px; /* aumentei bastante a altura */
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
-  
-  /* Fundo com imagem e sobreposição dourada translúcida */
-  background: 
-    linear-gradient(135deg, rgba(241,196,15,0.85), rgba(225,177,44,0.85)),
-    url("https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyWZf17b7xms4gcoXCiCXDDgGsTPdwFMtdvqU5DLJ3U2XfW-TIKxE6b4EWUwicn6y4lqwFqk1cNzwtMTgzc-eTvrtX2i0BGXkYOENrGNAscALgKv6quO7MemrswgmSAQsLfNCMy=s680-w680-h510-rw");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+    header {
+      background: linear-gradient(135deg, rgba(241,196,15,0.9), rgba(225,177,44,0.9)),
+                  url('https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyWZf17b7xms4gcoXCiCXDDgGsTPdwFMtdvqU5DLJ3U2XfW-TIKxE6b4EWUwicn6y4lqwFqk1cNzwtMTgzc-eTvrtX2i0BGXkYOENrGNAscALgKv6quO7MemrswgmSAQsLfNCMy=s680-w680-h510-rw');
+      background-size: cover;
+      background-position: center;
+      padding: 90px 20px 60px;
+      text-align: center;
+      color: #000;
+    }
 
-/* título e subtítulo mais destacados */
-header h1 {
-  font-size: 2.5em;
-  margin: 0;
-  letter-spacing: 2px;
-}
+    header h1 {
+      font-size: 2.1em;
+      font-weight: bold;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
 
-header p {
-  font-size: 1.2em;
-  margin-top: 10px;
-  color: #222;
-  font-weight: 500;
-}
-
-
+    header p {
+      font-size: 1.15em;
+      margin-top: 8px;
+      color: #111;
+      font-weight: 600;
+    }
 
     nav {
-      background: #111;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      padding: 10px 0;
+      background: #000;
+      padding: 14px 10px;
+      overflow-x: auto;
+      white-space: nowrap;
       border-bottom: 2px solid #f1c40f;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
     }
+    nav::-webkit-scrollbar { display: none; }
 
     nav button {
       background: none;
       border: none;
       color: #f1c40f;
       font-weight: bold;
+      font-size: 0.95em;
+      padding: 9px 16px;
+      margin: 0 4px;
       cursor: pointer;
-      font-size: 1em;
-      padding: 8px 15px;
-      transition: 0.3s;
+      border-radius: 6px;
+      transition: all 0.3s;
+      min-width: 100px;
     }
-
     nav button:hover, nav button.active {
       background: #f1c40f;
       color: #000;
-      border-radius: 5px;
     }
 
     main {
-      max-width: 1100px;
-      margin: 30px auto;
-      padding: 0 20px;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 15px;
     }
 
-    .secao {
-      display: none;
-    }
-
-    .secao.ativa {
-      display: block;
-    }
+    .secao { display: none; }
+    .secao.ativa { display: block; }
 
     .catalogo {
       display: grid;
-      grid-template-columns: repeat(4, minmax(220px, 1fr));
-      gap: 25px;
+      gap: 18px;
+      padding: 10px 0;
     }
 
     .produto {
       background: #111;
+      border: 2px solid #f1c40f;
       border-radius: 12px;
       overflow: hidden;
-      border: 2px solid #f1c40f;
-      box-shadow: 0 4px 12px rgba(241,196,15,0.4);
-      transition: transform 0.4s, box-shadow 0.3s;
+      box-shadow: 0 4px 12px rgba(241,196,15,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
     }
-
     .produto:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(241,196,15,0.6);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(241,196,15,0.5);
     }
 
     .produto img {
       width: 100%;
-      height: 180px;
+      height: 150px;
       object-fit: cover;
       border-bottom: 2px solid #f1c40f;
+      background: #fff;
     }
 
     .info {
-      padding: 15px;
+      padding: 12px;
       text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .info h2 {
-      font-size: 1.1em;
-      margin: 8px 0;
+      font-size: 1em;
       color: #f1c40f;
       font-weight: bold;
+      margin: 6px 0;
+      line-height: 1.2;
     }
 
     .info p {
+      font-size: 0.85em;
       color: #ccc;
-      margin-bottom: 8px;
-      font-size: 0.9em;
+      margin: 4px 0;
+      flex-grow: 1;
     }
 
     .preco {
       font-size: 1.1em;
       font-weight: bold;
       color: #f1c40f;
+      margin-top: 6px;
     }
 
     footer {
       text-align: center;
       color: #aaa;
       font-size: 0.9em;
-      padding: 20px;
+      padding: 25px 15px;
       margin-top: 40px;
       border-top: 1px solid #333;
+      line-height: 1.6;
+    }
+
+    /* RESPONSIVO */
+    @media (min-width: 1024px) {
+      .catalogo { grid-template-columns: repeat(4, 1fr); }
+      header { padding: 120px 20px; }
+      header h1 { font-size: 2.5em; }
+    }
+
+    @media (min-width: 768px) and (max-width: 1023px) {
+      .catalogo { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 767px) {
+      .catalogo { grid-template-columns: 1fr 1fr; gap: 16px; }
+      header { padding: 70px 15px 50px; }
+      header h1 { font-size: 1.8em; }
+      header p { font-size: 1em; }
+      nav button { font-size: 0.85em; padding: 7px 12px; min-width: 90px; }
+      .info h2 { font-size: 0.95em; }
+      .preco { font-size: 1.05em; }
+    }
+
+    @media (max-width: 480px) {
+      nav button { font-size: 0.8em; padding: 6px 10px; min-width: 85px; }
+      .info h2 { font-size: 0.9em; }
+      .info p { font-size: 0.8em; }
     }
   </style>
 </head>
-
 <body>
+
   <header>
     <h1>Gabiroba Materiais de Construção</h1>
     <p>Catálogo Virtual</p>
@@ -163,598 +190,697 @@ header p {
   </nav>
 
   <main>
+
     <!-- ALVENARIA -->
-<section id="alvenaria" class="secao ativa">
-  <div class="catalogo">
-
-    <div class="produto">
-      <img src="https://images.tcdn.com.br/img/img_prod/1007460/areia_grossa_m_491_1_1f2f6dbb8afd4b9d1be73aadaa4b175f.jpg">
-      <div class="info">
-        <h2>Areia Grossa m³</h2>
-        <p>Grossa - Porto de Hosana</p>
-        <div class="preco">R$ 210,00</div>
+    <section id="alvenaria" class="secao ativa">
+      <div class="catalogo">
+        <div class="produto">
+          <img src="https://images.tcdn.com.br/img/img_prod/1007460/areia_grossa_m_491_1_1f2f6dbb8afd4b9d1be73aadaa4b175f.jpg">
+          <div class="info">
+            <h2>Areia Grossa m³</h2>
+            <p>Grossa - Porto de Hosana</p>
+            <div class="preco">R$ 210,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.leroymerlin.com.br/products/areia_media_lavada_saco_20kg_grupo_tomino_89851566_8086_600x600.jpg">
+          <div class="info">
+            <h2>Areia média m³</h2>
+            <p>Média para fina - Porto de Congonhinhas</p>
+            <div class="preco">R$ 145,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.awsli.com.br/300x300/1224/1224098/produto/165072185/1aa5498391.jpg" alt="Cal Virgem">
+          <div class="info">
+            <h2>Cal virgem Araras</h2>
+            <p>CV-C 20kg</p>
+            <div class="preco">R$ 16,90</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://telhanorte.vtexassets.com/arquivos/ids/1262251/1444778-1.jpg?v=638479381563500000" alt="Cimento Votoran">
+          <div class="info">
+            <h2>Cimento Votoran</h2>
+            <p>CP-II</p>
+            <div class="preco">R$ 36,60</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.awsli.com.br/600x450/1224/1224098/produto/64494932/coluna-pronta-bgqqfpiss2.png" alt="Coluna Armada 5/16">
+          <div class="info">
+            <h2>Coluna Armada</h2>
+            <p>7x14cm - 5/16" 6m</p>
+            <div class="preco">R$ 89,90</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.awsli.com.br/600x450/1224/1224098/produto/64494932/coluna-pronta-bgqqfpiss2.png" alt="Coluna Armada 3/8">
+          <div class="info">
+            <h2>Coluna Armada</h2>
+            <p>7x14cm - 3/8" 6m</p>
+            <div class="preco">R$ 165,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHro9xHIbgeP3xEUboZZGYIAhX0jDuveqOLOjgVVCo86uADyR9MhFq5zBm4Sg24srgmAo&usqp=CAU" alt="Ferro 5/16">
+          <div class="info">
+            <h2>Ferro barra</h2>
+            <p>5/16" 8mm - 12m</p>
+            <div class="preco">R$ 35,30</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHro9xHIbgeP3xEUboZZGYIAhX0jDuveqOLOjgVVCo86uADyR9MhFq5zBm4Sg24srgmAo&usqp=CAU" alt="Ferro 3/8">
+          <div class="info">
+            <h2>Ferro barra</h2>
+            <p>3/8" 10mm - 12m</p>
+            <div class="preco">R$ 53,30</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://www.ecompletocdn.com.br/i/fp/1517/1223527_3.jpg" alt="Malha Pop Leve">
+          <div class="info">
+            <h2>Malha Pop</h2>
+            <p>Leve 2x3m 20x20</p>
+            <div class="preco">R$ 39,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://www.ecompletocdn.com.br/i/fp/1517/1223527_3.jpg" alt="Malha Pop 15x15">
+          <div class="info">
+            <h2>Malha Pop</h2>
+            <p>2x3m 15x15</p>
+            <div class="preco">R$ 94,35</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://dcdn-us.mitiendanube.com/stores/831/827/products/pedra-brita-britada-preta-curitiba1-83c3f8e41219091fbc16154937000035-1024-1024.webp" alt="Pedra 0">
+          <div class="info">
+            <h2>Pedra nº 0 m³</h2>
+            <p>Pedrisco</p>
+            <div class="preco">R$ 110,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRissjFmeOw5oZM6J-4XIUdXJ8fLtwPn2zpbftSKYEAwvQklZen1Z4DJ4grPcSZTaE496c&usqp=CAU" alt="Pedra 1/2">
+          <div class="info">
+            <h2>Pedra 1/2 m³</h2>
+            <p>Para concreto</p>
+            <div class="preco">R$ 121,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://www.caculacentermat.com.br/upload/product/Q1nT9njXWc2PPH1gUJD0RfgYktR9c2Vuwkl8GNUy.png" alt="Tijolo 6 furos">
+          <div class="info">
+            <h2>Tijolo 6 furos</h2>
+            <p>9x14x19cm unidade</p>
+            <div class="preco">R$ 0,70</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://dcdn-us.mitiendanube.com/stores/002/054/579/products/tijolo-81-46a3b49ba3f556a5b716488426734775-1024-1024.webp" alt="Tijolo 8 furos 9x19">
+          <div class="info">
+            <h2>Tijolo 8 furos</h2>
+            <p>9x19x19cm unidade</p>
+            <div class="preco">R$ 0,95</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://www.ceramicalavaqui.com.br/storage/empresas/32872302000146/produtos/pgPHEGIlBvnFyBIq8VgXPMgAiNva3S-metabGF2YXF1aSAoNzcpLkpQRw==-_principal.png" alt="Tijolo 8 furos 11.5">
+          <div class="info">
+            <h2>Tijolo 8 furos</h2>
+            <p>11,5x19x19 unidade</p>
+            <div class="preco">R$ 1,30</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXOGYrIW6VUySpcT74jHHe473k2aRUKvjWrw&s" alt="Tijolo 8 furos 14">
+          <div class="info">
+            <h2>Tijolo 8 furos</h2>
+            <p>14x19x19 unidade</p>
+            <div class="preco">R$ 1,35</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://ghaus.vtexassets.com/arquivos/ids/182166-800-800?v=638361881973000000&width=800&height=800&aspect=true" alt="Tijolo Comum">
+          <div class="info">
+            <h2>Tijolo comum</h2>
+            <p>maciço unidade</p>
+            <div class="preco">R$ 0,78</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://www.ecompletocdn.com.br/i/fp/1517/1223105_2.jpg" alt="Treliça 8SL">
+          <div class="info">
+            <h2>Treliça 8SL</h2>
+            <p>6,0x3,4x4,2 - 6m</p>
+            <div class="preco">R$ 38,70</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://berlimferros.com.br/fotos/tubos%20de%20esgoto.jpg" alt="Tubo Esgoto 40mm">
+          <div class="info">
+            <h2>Tubo de esgoto Krona</h2>
+            <p>1.1/4" (40mm) 6m</p>
+            <div class="preco">R$ 47,20</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://berlimferros.com.br/fotos/tubos%20de%20esgoto.jpg" alt="Tubo Esgoto 50mm">
+          <div class="info">
+            <h2>Tubo de esgoto Krona</h2>
+            <p>1.1/2" (50mm) 6m</p>
+            <div class="preco">R$ 64,20</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://berlimferros.com.br/fotos/tubos%20de%20esgoto.jpg" alt="Tubo Esgoto 75mm">
+          <div class="info">
+            <h2>Tubo de esgoto Krona</h2>
+            <p>2.1/2" (75mm) 6m</p>
+            <div class="preco">R$ 105,40</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://berlimferros.com.br/fotos/tubos%20de%20esgoto.jpg" alt="Tubo Esgoto 100mm">
+          <div class="info">
+            <h2>Tubo de esgoto Krona</h2>
+            <p>4" (100mm) 6m</p>
+            <div class="preco">R$ 93,20</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://berlimferros.com.br/fotos/tubos%20de%20esgoto.jpg" alt="Tubo Esgoto 150mm">
+          <div class="info">
+            <h2>Tubo de esgoto Krona</h2>
+            <p>6" (150mm) 6m</p>
+            <div class="preco">R$ 226,20</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.awsli.com.br/2500x2500/1957/1957861/produto/168486541/krona-tubo-sold-marrom-barra-6m-50mm-1-1-2-d9de4699-082gcnxvh4.png" alt="Tubo Soldável 20mm">
+          <div class="info">
+            <h2>Tubo soldável Krona</h2>
+            <p>1/2 (20mm) 6m</p>
+            <div class="preco">R$ 20,20</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.awsli.com.br/2500x2500/1957/1957861/produto/168486541/krona-tubo-sold-marrom-barra-6m-50mm-1-1-2-d9de4699-082gcnxvh4.png" alt="Tubo Soldável 25mm">
+          <div class="info">
+            <h2>Tubo soldável Krona</h2>
+            <p>3/4 (25mm) 6m</p>
+            <div class="preco">R$ 24,13</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.awsli.com.br/2500x2500/1957/1957861/produto/168486541/krona-tubo-sold-marrom-barra-6m-50mm-1-1-2-d9de4699-082gcnxvh4.png" alt="Tubo Soldável 32mm">
+          <div class="info">
+            <h2>Tubo soldável Krona</h2>
+            <p>1" (32mm) 6m</p>
+            <div class="preco">R$ 54,90</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.awsli.com.br/2500x2500/1957/1957861/produto/168486541/krona-tubo-sold-marrom-barra-6m-50mm-1-1-2-d9de4699-082gcnxvh4.png" alt="Tubo Soldável 40mm">
+          <div class="info">
+            <h2>Tubo soldável Krona</h2>
+            <p>1.1/4" (40mm) 6m</p>
+            <div class="preco">R$ 81,50</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.awsli.com.br/2500x2500/1957/1957861/produto/168486541/krona-tubo-sold-marrom-barra-6m-50mm-1-1-2-d9de4699-082gcnxvh4.png" alt="Tubo Soldável 50mm">
+          <div class="info">
+            <h2>Tubo soldável Krona</h2>
+            <p>1.1/2" (50mm) 6m</p>
+            <div class="preco">R$ 87,60</div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cdn.leroymerlin.com.br/products/areia_media_lavada_saco_20kg_grupo_tomino_89851566_8086_600x600.jpg">
-      <div class="info">
-        <h2>Areia média m³</h2>
-        <p>Média para fina - Porto de Congonhinhas</p>
-        <div class="preco">R$ 145,00</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cdn.awsli.com.br/300x300/1224/1224098/produto/165072185/1aa5498391.jpg">
-      <div class="info">
-        <h2>Cal virgem Araras</h2>
-        <p>CV-C 20kg</p>
-        <div class="preco">R$ 16,90</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://telhanorte.vtexassets.com/arquivos/ids/1262251/1444778-1.jpg?v=638479381563500000">
-      <div class="info">
-        <h2>Cimento Votoran</h2>
-        <p>CP-II</p>
-        <div class="preco">R$ 36,60</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cdn.awsli.com.br/600x450/1224/1224098/produto/64494932/coluna-pronta-bgqqfpiss2.png">
-      <div class="info">
-        <h2>Coluna Armada</h2>
-        <p>7x14cm - 5/16" 6m</p>
-        <div class="preco">R$ 89,90</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cdn.awsli.com.br/600x450/1224/1224098/produto/64494932/coluna-pronta-bgqqfpiss2.png">
-      <div class="info">
-        <h2>Coluna Armada</h2>
-        <p>7x14cm - 3/8" 6m</p>
-        <div class="preco">R$ 165,00</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHro9xHIbgeP3xEUboZZGYIAhX0jDuveqOLOjgVVCo86uADyR9MhFq5zBm4Sg24srgmAo&usqp=CAU">
-      <div class="info">
-        <h2>Ferro barra</h2>
-        <p>5/16"  8mm - 12m </p>
-        <div class="preco">R$ 35,30</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHro9xHIbgeP3xEUboZZGYIAhX0jDuveqOLOjgVVCo86uADyR9MhFq5zBm4Sg24srgmAo&usqp=CAU">
-      <div class="info">
-        <h2>Ferro barra</h2>
-        <p>3/8"  10mm - 12m </p>
-        <div class="preco">R$ 53,30</div>
-      </div>
-    </div>
-
- <div class="produto">
-      <img src="https://www.ecompletocdn.com.br/i/fp/1517/1223527_3.jpg">
-      <div class="info">
-        <h2>Malha Pop</h2>
-        <p>Leve 2x3m 20x20</p>
-        <div class="preco">R$ 39,00</div>
-      </div>
-    </div>
-
-     <div class="produto">
-      <img src="https://www.ecompletocdn.com.br/i/fp/1517/1223527_3.jpg">
-      <div class="info">
-        <h2>Malha Pop</h2>
-        <p>2x3m 15x15</p>
-        <div class="preco">R$ 94,35</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://dcdn-us.mitiendanube.com/stores/831/827/products/pedra-brita-britada-preta-curitiba1-83c3f8e41219091fbc16154937000035-1024-1024.webp">
-      <div class="info">
-        <h2>Pedra nº 0 m³</h2>
-        <p>Pedrisco</p>
-        <div class="preco">R$ 110,00</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRissjFmeOw5oZM6J-4XIUdXJ8fLtwPn2zpbftSKYEAwvQklZen1Z4DJ4grPcSZTaE496c&usqp=CAU">
-      <div class="info">
-        <h2>Pedra 1/2 m³</h2>
-        <p>Para concreto</p>
-        <div class="preco">R$ 121,00</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://www.caculacentermat.com.br/upload/product/Q1nT9njXWc2PPH1gUJD0RfgYktR9c2Vuwkl8GNUy.png">
-      <div class="info">
-        <h2>Tijolo 6 furos</h2>
-        <p>9x14x19cm unidade</p>
-        <div class="preco">R$ 0,70</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://dcdn-us.mitiendanube.com/stores/002/054/579/products/tijolo-81-46a3b49ba3f556a5b716488426734775-1024-1024.webp">
-      <div class="info">
-        <h2>Tijolo 8 furos</h2>
-        <p>9x19x19cm unidade</p>
-        <div class="preco">R$ 0,95</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://www.ceramicalavaqui.com.br/storage/empresas/32872302000146/produtos/pgPHEGIlBvnFyBIq8VgXPMgAiNva3S-metabGF2YXF1aSAoNzcpLkpQRw==-_principal.png">
-      <div class="info">
-        <h2>Tijolo 8 furos</h2>
-        <p>11,5x19x19 unidade</p>
-        <div class="preco">R$ 1,30</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXOGYrIW6VUySpcT74jHHe473k2aRUKvjWrw&s">
-      <div class="info">
-        <h2>Tijolo 8 furos</h2>
-        <p>14x19x19 unidade</p>
-        <div class="preco">R$ 1,35</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://ghaus.vtexassets.com/arquivos/ids/182166-800-800?v=638361881973000000&width=800&height=800&aspect=true">
-      <div class="info">
-        <h2>Tijolo comum</h2>
-        <p>maciço unidade</p>
-        <div class="preco">R$ 0,78</div>
-      </div>
-    </div>
-
-     <div class="produto">
-      <img src="https://www.ecompletocdn.com.br/i/fp/1517/1223105_2.jpg">
-      <div class="info">
-        <h2>Treliça 8SL</h2>
-        <p>6,0x3,4x4,2 - 6m</p>
-        <div class="preco">R$ 38,70</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://berlimferros.com.br/fotos/tubos%20de%20esgoto.jpg">
-      <div class="info">
-        <h2>Tubo de esgoto Krona</h2>
-        <p>1.1/4" (40mm) 6m</p>
-        <div class="preco">R$ 47,20</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://berlimferros.com.br/fotos/tubos%20de%20esgoto.jpg">
-      <div class="info">
-        <h2>Tubo de esgoto Krona</h2>
-        <p>1.1/2" (50mm) 6m</p>
-        <div class="preco">R$ 64,20</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://berlimferros.com.br/fotos/tubos%20de%20esgoto.jpg">
-      <div class="info">
-        <h2>Tubo de esgoto Krona</h2>
-        <p>2.1/2" (75mm) 6m</p>
-        <div class="preco">R$ 105,40</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://berlimferros.com.br/fotos/tubos%20de%20esgoto.jpg">
-      <div class="info">
-        <h2>Tubo de esgoto Krona</h2>
-        <p>4" (100mm) 6m</p>
-        <div class="preco">R$ 93,20</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://berlimferros.com.br/fotos/tubos%20de%20esgoto.jpg">
-      <div class="info">
-        <h2>Tubo de esgoto Krona</h2>
-        <p>6" (150mm) 6m</p>
-        <div class="preco">R$ 226,20</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cdn.awsli.com.br/2500x2500/1957/1957861/produto/168486541/krona-tubo-sold-marrom-barra-6m-50mm-1-1-2-d9de4699-082gcnxvh4.png">
-      <div class="info">
-        <h2>Tubo soldável Krona</h2>
-        <p>1/2 (20mm) 6m</p>
-        <div class="preco">R$ 20,20</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cdn.awsli.com.br/2500x2500/1957/1957861/produto/168486541/krona-tubo-sold-marrom-barra-6m-50mm-1-1-2-d9de4699-082gcnxvh4.png">
-      <div class="info">
-        <h2>Tubo soldável Krona</h2>
-        <p>3/4 (25mm) 6m</p>
-        <div class="preco">R$ 24,13</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cdn.awsli.com.br/2500x2500/1957/1957861/produto/168486541/krona-tubo-sold-marrom-barra-6m-50mm-1-1-2-d9de4699-082gcnxvh4.png">
-      <div class="info">
-        <h2>Tubo soldável Krona</h2>
-        <p>1" (32mm) 6m</p>
-        <div class="preco">R$ 54,90</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cdn.awsli.com.br/2500x2500/1957/1957861/produto/168486541/krona-tubo-sold-marrom-barra-6m-50mm-1-1-2-d9de4699-082gcnxvh4.png">
-      <div class="info">
-        <h2>Tubo soldável Krona</h2>
-        <p>1.1/4" (40mm) 6m</p>
-        <div class="preco">R$ 81,50</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cdn.awsli.com.br/2500x2500/1957/1957861/produto/168486541/krona-tubo-sold-marrom-barra-6m-50mm-1-1-2-d9de4699-082gcnxvh4.png">
-      <div class="info">
-        <h2>Tubo soldável Krona</h2>
-        <p>1.1/2" (50mm) 6m</p>
-        <div class="preco">R$ 87,60</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
+    </section>
 
     <!-- ELÉTRICOS -->
-<section id="eletricos" class="secao">
-  <div class="catalogo">
-
-    <div class="produto">
-      <img src="https://todimo.vtexassets.com/arquivos/ids/192009-800-800?v=638125138934170000&width=800&height=800&aspect=true">
-      <div class="info">
-        <h2>Mangueira Corrugada Amarela Krona</h2>
-        <p>1/2" (20mm)</p>
-        <div class="preco">R$ 2,40</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://todimo.vtexassets.com/arquivos/ids/192009-800-800?v=638125138934170000&width=800&height=800&aspect=true">
-      <div class="info">
-        <h2>Mangueira Corrugada Amarela Krona</h2>
-        <p>3/4" (25mm)</p>
-        <div class="preco">R$ 2,20</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://todimo.vtexassets.com/arquivos/ids/192009-800-800?v=638125138934170000&width=800&height=800&aspect=true">
-      <div class="info">
-        <h2>Mangueira Corrugada Amarela Krona</h2>
-        <p>1" (32mm)</p>
-        <div class="preco">R$ 3,50</div>
-      </div>
-    </div>
-
- <div class="produto">
-      <img src="https://cdn.grupolle.com.br/produtos/2753/2753.jpg">
-      <div class="info">
-        <h2>Mangueira Corrugada Laranja Krona</h2>
-        <p> Reforçada 3/4" (25mm)</p>
-        <div class="preco">R$ 3,00</div>
-      </div>
-    </div>
-
-      <div class="produto">
-      <img src="https://cdn.grupolle.com.br/produtos/2753/2753.jpg">
-      <div class="info">
-        <h2>Mangueira Corrugada Laranja Krona</h2>
-        <p> Reforçada 1" (32mm)</p>
-        <div class="preco">R$ 5,10</div>
-      </div>
-    </div>
-
-          <div class="produto">
-      <img src="https://images.tcdn.com.br/img/img_prod/559367/fio_cabo_flexivel_750v_1mm2_rolo_de_100m_sil_corfio_495_6_c50d89c05dd867bca2b91b0fd1bf1126.jpg">
-      <div class="info">
-        <h2>Cabo Flex Sil</h2>
-        <p> 6mm </p>
-        <div class="preco">R$ 6,60</div>
-      </div>
-    </div>
-
-          <div class="produto">
-      <img src="https://images.tcdn.com.br/img/img_prod/559367/fio_cabo_flexivel_750v_1mm2_rolo_de_100m_sil_corfio_495_6_c50d89c05dd867bca2b91b0fd1bf1126.jpg">
-      <div class="info">
-        <h2>Cabo Flex Instalaccom</h2>
-        <p> 2,5mm </p>
-        <div class="preco">R$ 2,30</div>
-      </div>
-    </div>
-
+    <section id="eletricos" class="secao">
+      <div class="catalogo">
         <div class="produto">
-      <img src="https://dallabernardina.vtexassets.com/arquivos/ids/184519-800-auto?v=638261479150830000&width=800&height=auto&aspect=true">
-      <div class="info">
-        <h2>Luminária de Led Avant</h2>
-        <p> Sobrepor 18w 6500k Branca</p>
-        <div class="preco">R$ 23,00</div>
-      </div>
-    </div>
-
+          <img src="https://todimo.vtexassets.com/arquivos/ids/192009-800-800?v=638125138934170000&width=800&height=800&aspect=true" alt="Mangueira 1/2">
+          <div class="info">
+            <h2>Mangueira Corrugada Amarela Krona</h2>
+            <p>1/2" (20mm)</p>
+            <div class="preco">R$ 2,40</div>
+          </div>
+        </div>
         <div class="produto">
-      <img src="https://xg1e7cnw4i.execute-api.us-east-1.amazonaws.com/image/serpal/image/catalog/product/fit-in/500x500/24369.jpg">
-      <div class="info">
-        <h2>Lâmpada Bulbo Led Avant</h2>
-        <p>20w 6500k</p>
-        <div class="preco">R$ 14,40</div>
-      </div>
-    </div>
-
+          <img src="https://todimo.vtexassets.com/arquivos/ids/192009-800-800?v=638125138934170000&width=800&height=800&aspect=true" alt="Mangueira 3/4">
+          <div class="info">
+            <h2>Mangueira Corrugada Amarela Krona</h2>
+            <p>3/4" (25mm)</p>
+            <div class="preco">R$ 2,20</div>
+          </div>
+        </div>
         <div class="produto">
-      <img src="https://apotiguar.fbitsstatic.net/img/p/lampada-led-bulbo-9w-6500k-elgin-76461/261942-1.jpg?w=800&h=800&v=no-change&qs=ignore">
-      <div class="info">
-        <h2>Lâmpada Bulbo Led Elgin</h2>
-        <p>9w 6500k</p>
-        <div class="preco">R$ 5,80</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://lojasolar.vtexassets.com/arquivos/ids/261510-800-auto?v=638962558113600000&width=800&height=auto&aspect=true">
-      <div class="info">
-        <h2>Caixa de Luz 4x2 Krona</h2>
-        <p>Embutir</p>
-        <div class="preco">R$ 1,24</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://www.lojaeletrica.com.br/media/catalog/product/2/1/2140714130025_Caixa_PVC_4x4poleg__Amarela_1266_Krona.JPG?optimize=high&bg-color=255,255,255&fit=bounds&height=642&width=643&canvas=643:642">
-      <div class="info">
-        <h2>Caixa de Luz 4x4 Krona</h2>
-        <p>Embutir</p>
-        <div class="preco">R$ 4,60</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://zaffari.vtexassets.com/arquivos/ids/287727-800-450?v=638944958125700000&width=800&height=450&aspect=true">
-      <div class="info">
-        <h2>Ducha Lorenzetti</h2>
-        <p>Maxi Ducha Ultra 110/220V</p>
-        <div class="preco">R$ 86,60</div>
-      </div>
-    </div>
-
+          <img src="https://todimo.vtexassets.com/arquivos/ids/192009-800-800?v=638125138934170000&width=800&height=800&aspect=true" alt="Mangueira 1">
+          <div class="info">
+            <h2>Mangueira Corrugada Amarela Krona</h2>
+            <p>1" (32mm)</p>
+            <div class="preco">R$ 3,50</div>
+          </div>
+        </div>
         <div class="produto">
-      <img src="https://cdn.distribuidoralopes.com.br/produtos/30026/30026.jpg">
-      <div class="info">
-        <h2>Quadro de distribuição Krona</h2>
-        <p>DISJ DIN/NEMA 03/04 EMB</p>
-        <div class="preco">R$ 30,10</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cdn.distribuidoralopes.com.br/produtos/30026/30026.jpg">
-      <div class="info">
-        <h2>Quadro de distribuição Krona</h2>
-        <p>DISJ DIN/NEMA 08/06 EMB</p>
-        <div class="preco">R$ 47,90</div>
-      </div>
-    </div>
-
+          <img src="https://cdn.grupolle.com.br/produtos/2753/2753.jpg" alt="Mangueira Laranja 3/4">
+          <div class="info">
+            <h2>Mangueira Corrugada Laranja Krona</h2>
+            <p>Reforçada 3/4" (25mm)</p>
+            <div class="preco">R$ 3,00</div>
+          </div>
+        </div>
         <div class="produto">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4PLh7B5Kjnosr3F-btH8GQGETr1wPE6ug7Q&s">
-      <div class="info">
-        <h2>Torneira Elétrica Lorenzetti</h2>
-        <p>Loren Easy 4800w</p>
-        <div class="preco">R$ 180,40</div>
+          <img src="https://cdn.grupolle.com.br/produtos/2753/2753.jpg" alt="Mangueira Laranja 1">
+          <div class="info">
+            <h2>Mangueira Corrugada Laranja Krona</h2>
+            <p>Reforçada 1" (32mm)</p>
+            <div class="preco">R$ 5,10</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://images.tcdn.com.br/img/img_prod/559367/fio_cabo_flexivel_750v_1mm2_rolo_de_100m_sil_corfio_495_6_c50d89c05dd867bca2b91b0fd1bf1126.jpg" alt="Cabo 6mm">
+          <div class="info">
+            <h2>Cabo Flex Sil</h2>
+            <p>6mm</p>
+            <div class="preco">R$ 6,60</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://images.tcdn.com.br/img/img_prod/559367/fio_cabo_flexivel_750v_1mm2_rolo_de_100m_sil_corfio_495_6_c50d89c05dd867bca2b91b0fd1bf1126.jpg" alt="Cabo 2.5mm">
+          <div class="info">
+            <h2>Cabo Flex Instalaccom</h2>
+            <p>2,5mm</p>
+            <div class="preco">R$ 2,30</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://dallabernardina.vtexassets.com/arquivos/ids/184519-800-auto?v=638261479150830000&width=800&height=auto&aspect=true" alt="Luminária LED">
+          <div class="info">
+            <h2>Luminária de Led Avant</h2>
+            <p>Sobrepor 18w 6500k Branca</p>
+            <div class="preco">R$ 23,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://xg1e7cnw4i.execute-api.us-east-1.amazonaws.com/image/serpal/image/catalog/product/fit-in/500x500/24369.jpg" alt="Lâmpada 20w">
+          <div class="info">
+            <h2>Lâmpada Bulbo Led Avant</h2>
+            <p>20w 6500k</p>
+            <div class="preco">R$ 14,40</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://apotiguar.fbitsstatic.net/img/p/lampada-led-bulbo-9w-6500k-elgin-76461/261942-1.jpg?w=800&h=800&v=no-change&qs=ignore" alt="Lâmpada 9w">
+          <div class="info">
+            <h2>Lâmpada Bulbo Led Elgin</h2>
+            <p>9w 6500k</p>
+            <div class="preco">R$ 5,80</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://lojasolar.vtexassets.com/arquivos/ids/261510-800-auto?v=638962558113600000&width=800&height=auto&aspect=true" alt="Caixa 4x2">
+          <div class="info">
+            <h2>Caixa de Luz 4x2 Krona</h2>
+            <p>Embutir</p>
+            <div class="preco">R$ 1,24</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://www.lojaeletrica.com.br/media/catalog/product/2/1/2140714130025_Caixa_PVC_4x4poleg__Amarela_1266_Krona.JPG?optimize=high&bg-color=255,255,255&fit=bounds&height=642&width=643&canvas=643:642" alt="Caixa 4x4">
+          <div class="info">
+            <h2>Caixa de Luz 4x4 Krona</h2>
+            <p>Embutir</p>
+            <div class="preco">R$ 4,60</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://zaffari.vtexassets.com/arquivos/ids/287727-800-450?v=638944958125700000&width=800&height=450&aspect=true" alt="Ducha Lorenzetti">
+          <div class="info">
+            <h2>Ducha Lorenzetti</h2>
+            <p>Maxi Ducha Ultra 110/220V</p>
+            <div class="preco">R$ 86,60</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.distribuidoralopes.com.br/produtos/30026/30026.jpg" alt="Quadro 03/04">
+          <div class="info">
+            <h2>Quadro de distribuição Krona</h2>
+            <p>DISJ DIN/NEMA 03/04 EMB</p>
+            <div class="preco">R$ 30,10</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.distribuidoralopes.com.br/produtos/30026/30026.jpg" alt="Quadro 08/06">
+          <div class="info">
+            <h2>Quadro de distribuição Krona</h2>
+            <p>DISJ DIN/NEMA 08/06 EMB</p>
+            <div class="preco">R$ 47,90</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4PLh7B5Kjnosr3F-btH8GQGETr1wPE6ug7Q&s" alt="Torneira Elétrica">
+          <div class="info">
+            <h2>Torneira Elétrica Lorenzetti</h2>
+            <p>Loren Easy 4800w</p>
+            <div class="preco">R$ 180,40</div>
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
 
-  </div>
-</section>
-
-
-  <!-- Calçados --> 
-<section id="calcados" class="secao">
-  <div class="catalogo">
-
-    <div class="produto">
-      <img src="https://terrafortz.com.br/images/botina_1020.jpg">
-      <div class="info">
-        <h2>Bota Cinza Nobuck</h2>
-        <p>Terrafortz</p>
-        <div class="preco">R$ 150,00</div>
+    <!-- CALÇADOS -->
+    <section id="calcados" class="secao">
+      <div class="catalogo">
+        <div class="produto">
+          <img src="https://terrafortz.com.br/images/botina_1020.jpg" alt="Bota Cinza">
+          <div class="info">
+            <h2>Bota Cinza Nobuck</h2>
+            <p>Terrafortz</p>
+            <div class="preco">R$ 150,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://terrafortz.com.br/images/botina_400.jpg" alt="Bota Couro Preto">
+          <div class="info">
+            <h2>Bota Couro Preto</h2>
+            <p>Terrafortz</p>
+            <div class="preco">R$ 107,90</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://terrafortz.com.br/images/botina_1030.jpg" alt="Bota Rato">
+          <div class="info">
+            <h2>Bota Rato Nobuck</h2>
+            <p>Terrafortz</p>
+            <div class="preco">R$ 180,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://terrafortz.com.br/images/botina_850.jpg" alt="Botina Agro">
+          <div class="info">
+            <h2>Botina Agro Café</h2>
+            <p>Terrafortz</p>
+            <div class="preco">R$ 145,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cf.shopee.com.br/file/br-11134207-7r98o-maw1tkt5f5yx4b" alt="Botina Pneu">
+          <div class="info">
+            <h2>Botina Sola de Pneu</h2>
+            <p>Kalce10</p>
+            <div class="preco">R$ 68,90</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://palaciodasferramentas.com.br/media/catalog/product/0/1/01-10vb48-bp-700302.jpg" alt="Botina Simples">
+          <div class="info">
+            <h2>Botina Simples</h2>
+            <p>Kalce10</p>
+            <div class="preco">R$ 71,40</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_742742-MLB84036638381_042025-O.webp" alt="Coturno Rambo">
+          <div class="info">
+            <h2>Coturno Militar Rambo</h2>
+            <p>Kalce10</p>
+            <div class="preco">R$ 123,00</div>
+          </div>
+        </div>
       </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://terrafortz.com.br/images/botina_400.jpg">
-      <div class="info">
-        <h2>Bota Couro Preto</h2>
-        <p>Terrafortz</p>
-        <div class="preco">R$ 107,90</div>
-      </div>
-    </div> 
-
-    <div class="produto">
-      <img src="https://terrafortz.com.br/images/botina_1030.jpg">
-      <div class="info">
-        <h2>Bota Rato Nobuck</h2>
-        <p>Terrafortz</p>
-        <div class="preco">R$ 180,00</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://terrafortz.com.br/images/botina_850.jpg">
-      <div class="info">
-        <h2>Botina Agro Café</h2>
-        <p>Terrafortz</p>
-        <div class="preco">R$ 145,00</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://cf.shopee.com.br/file/br-11134207-7r98o-maw1tkt5f5yx4b">
-      <div class="info">
-        <h2>Botina Sola de Pneu</h2>
-        <p>Kalce10</p>
-        <div class="preco">R$ 68,90</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://palaciodasferramentas.com.br/media/catalog/product/0/1/01-10vb48-bp-700302.jpg">
-      <div class="info">
-        <h2>Botina Simples</h2>
-        <p>Kalce10</p>
-        <div class="preco">R$ 71,40</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://http2.mlstatic.com/D_NQ_NP_742742-MLB84036638381_042025-O.webp">
-      <div class="info">
-        <h2>Coturno Militar Rambo</h2>
-        <p>Kalce10</p>
-        <div class="preco">R$ 123,00</div>
-      </div>
-    </div>
-
-  </div>
-</section>
+    </section>
 
     <!-- FERRAMENTAS -->
     <section id="ferramentas" class="secao">
       <div class="catalogo">
-        <div class="produto"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-wBUxLkpklxAcRU9R2q2JmD8pl8nWM2CSZw&s"><div class="info"><h2>Alicate de corte</h2><p>Foxlux</p><div class="preco">R$ 33,10</div></div></div>
-        <div class="produto"><img src="https://cdn.leroymerlin.com.br/products/alicate_de_bico_excellent_8vm_6_polegadas_uso_domestico_1566856167_da36_600x600.jpg"><div class="info"><h2>Alicate de bico</h2><p>EDA 6"</p><div class="preco">R$ 20,30</div></div></div>
-        <div class="produto"><img src="https://down-br.img.susercontent.com/file/722439e04ad9adeaa0fafb8cd38f42ec"><div class="info"><h2>Alicate de Pressão</h2><p>MTX reto</p><div class="preco">R$ 46,50</div></div></div>
-        <div class="produto"><img src="https://a-static.mlcdn.com.br/280x210/jogo-chave-fenda-phil-eda-6p-crv-8qp/rcdshop/10342211/bfb5aad9f16b54620b6a7a141427f3b0.jpeg"><div class="info"><h2>Jogo de chaves</h2><p>EDA 6pcs</p><div class="preco">R$ 67,90</div></div></div>
-        <div class="produto"><img src="https://a-static.mlcdn.com.br/%7Bw%7Dx%7Bh%7D/jg-chave-fixa-starfer-6-a-17-06p/rcdeletrica2/90085098/b79f3ad794b6fb8dad28e6672c576faf.jpeg"><div class="info"><h2>Jogo de chaves de boca</h2><p>Starfer 6 a 17mm - 6pcs</p><div class="preco">R$ 36,20</div></div></div>
-        <div class="produto"><img src="https://cobasi.vteximg.com.br/arquivos/ids/860045/7891117051404.jpg?v=637702652356930000"><div class="info"><h2>Tesoura de grama</h2><p>Tramontina</p><div class="preco">R$ 44,60</div></div></div>
-         <div class="produto"><img src="https://http2.mlstatic.com/D_NQ_NP_2X_619987-MLB44762270093_012021-F.webp"><div class="info"><h2>Vanga de bico</h2><p>Ramada - s/c</p><div class="preco">R$ 51,90</div></div></div>
-        <div class="produto"><img src="https://armazemcoral.agilecdn.com.br/820636.jpg"><div class="info"><h2>Cavadeira Articulada</h2><p>Alvorada 1,5m</p><div class="preco">R$ 67,40</div></div></div>
-        <div class="produto"><img src="https://http2.mlstatic.com/D_NQ_NP_2X_759767-MLB83180067525_032025-F.webp"><div class="info"><h2>Martelo de Carpinteiro</h2><p>Tekfund 29</p><div class="preco">R$ 42,50</div></div></div>
-        <div class="produto"><img src="https://http2.mlstatic.com/D_NQ_NP_2X_602689-MLB74480526925_022024-F.webp"><div class="info"><h2>Enxada para Jardim</h2><p>Alpe - Mini c/c</p><div class="preco">R$ 53,90</div></div></div>
-        <div class="produto"><img src="https://normatel.fbitsstatic.net/img/p/pa-quadrada-com-cabo-77464-434-71cm-tramontina-73814/260357.jpg?w=770&h=770&v=no-value"><div class="info"><h2>Pá quadrada</h2><p>Tramontina - c/c</p><div class="preco">R$ 67,10</div></div></div>
-        <div class="produto"><img src="https://arican.com.br/media/mf_webp/jpg/media/catalog/product/cache/7474d78ac48c00f249ae23158ba149be/e/s/estilete_cabo_emborrachado_18mm_3_laminas_starfer.webp"><div class="info"><h2>Estilete cabo emborrachado</h2><p>Starfer c/ 3 laminas</p><div class="preco">R$ 10,70</div></div></div>
+        <div class="produto">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-wBUxLkpklxAcRU9R2q2JmD8pl8nWM2CSZw&s" alt="Alicate Corte">
+          <div class="info">
+            <h2>Alicate de corte</h2>
+            <p>Foxlux</p>
+            <div class="preco">R$ 33,10</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.leroymerlin.com.br/products/alicate_de_bico_excellent_8vm_6_polegadas_uso_domestico_1566856167_da36_600x600.jpg" alt="Alicate Bico">
+          <div class="info">
+            <h2>Alicate de bico</h2>
+            <p>EDA 6"</p>
+            <div class="preco">R$ 20,30</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://down-br.img.susercontent.com/file/722439e04ad9adeaa0fafb8cd38f42ec" alt="Alicate Pressão">
+          <div class="info">
+            <h2>Alicate de Pressão</h2>
+            <p>MTX reto</p>
+            <div class="preco">R$ 46,50</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://a-static.mlcdn.com.br/280x210/jogo-chave-fenda-phil-eda-6p-crv-8qp/rcdshop/10342211/bfb5aad9f16b54620b6a7a141427f3b0.jpeg" alt="Jogo Chaves">
+          <div class="info">
+            <h2>Jogo de chaves</h2>
+            <p>EDA 6pcs</p>
+            <div class="preco">R$ 67,90</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://a-static.mlcdn.com.br/%7Bw%7Dx%7Bh%7D/jg-chave-fixa-starfer-6-a-17-06p/rcdeletrica2/90085098/b79f3ad794b6fb8dad28e6672c576faf.jpeg" alt="Jogo Boca">
+          <div class="info">
+            <h2>Jogo de chaves de boca</h2>
+            <p>Starfer 6 a 17mm - 6pcs</p>
+            <div class="preco">R$ 36,20</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cobasi.vteximg.com.br/arquivos/ids/860045/7891117051404.jpg?v=637702652356930000" alt="Tesoura Grama">
+          <div class="info">
+            <h2>Tesoura de grama</h2>
+            <p>Tramontina</p>
+            <div class="preco">R$ 44,60</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_619987-MLB44762270093_012021-F.webp" alt="Vanga Bico">
+          <div class="info">
+            <h2>Vanga de bico</h2>
+            <p>Ramada - s/c</p>
+            <div class="preco">R$ 51,90</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://armazemcoral.agilecdn.com.br/820636.jpg" alt="Cavadeira">
+          <div class="info">
+            <h2>Cavadeira Articulada</h2>
+            <p>Alvorada 1,5m</p>
+            <div class="preco">R$ 67,40</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_759767-MLB83180067525_032025-F.webp" alt="Martelo">
+          <div class="info">
+            <h2>Martelo de Carpinteiro</h2>
+            <p>Tekfund 29</p>
+            <div class="preco">R$ 42,50</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_2X_602689-MLB74480526925_022024-F.webp" alt="Enxada Jardim">
+          <div class="info">
+            <h2>Enxada para Jardim</h2>
+            <p>Alpe - Mini c/c</p>
+            <div class="preco">R$ 53,90</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://normatel.fbitsstatic.net/img/p/pa-quadrada-com-cabo-77464-434-71cm-tramontina-73814/260357.jpg?w=770&h=770&v=no-value" alt="Pá Quadrada">
+          <div class="info">
+            <h2>Pá quadrada</h2>
+            <p>Tramontina - c/c</p>
+            <div class="preco">R$ 67,10</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://arican.com.br/media/mf_webp/jpg/media/catalog/product/cache/7474d78ac48c00f249ae23158ba149be/e/s/estilete_cabo_emborrachado_18mm_3_laminas_starfer.webp" alt="Estilete">
+          <div class="info">
+            <h2>Estilete cabo emborrachado</h2>
+            <p>Starfer c/ 3 laminas</p>
+            <div class="preco">R$ 10,70</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- DIVERSOS -->
     <section id="diversos" class="secao">
       <div class="catalogo">
-        <div class="produto"><img src="https://images.tcdn.com.br/img/img_prod/1168655/desengripante_spray_chemicolor_lub_orange_250ml_7623_1_d85f52e1604a86925fb9034f14c2a992.jpg"><div class="info"><h2>Desengripante Spray</h2><p>250ml Chemicolor</p><div class="preco">R$ 6,50</div></div></div>
-        <div class="produto"><img src="https://fixafioferramentas.com.br/wp-content/uploads/2024/03/15257656254_3126203.jpg"><div class="info"><h2>Espuma Expansiva</h2><p>Prime top</p><div class="preco">R$ 18,00</div></div></div>
-        <div class="produto"><img src="https://images.tcdn.com.br/img/img_prod/1303015/fogareiro_portatil_de_acendimento_automatico_atopy_677_1_619d87155bbb0582ce20bc164b7ae37e.jpg"><div class="info"><h2>Fogareiro Portátil</h2><p>Atopy</p><div class="preco">R$ 143,80</div></div></div>
-        <div class="produto"><img src="https://invicta.vteximg.com.br/arquivos/ids/171339-480-480/garrafao_termico_pro_3L_vermelho_velvet4.png?v=638772177856600000"><div class="info"><h2>Garrafão Térmico</h2><p>Invicta Velvet 3L</p><div class="preco">R$ 43,00</div></div></div>
-        <div class="produto"><img src="https://images.tcdn.com.br/img/img_prod/693228/bomba_de_ar_manual_navy_pro_10899_1_46f6c1e64b4f9385d83789dc935d5690.jpg"><div class="info"><h2>Bomba de Ar manual</h2><p>Navy Pro</p><div class="preco">R$ 23,50</div></div></div>
-        <div class="produto"><img src="https://http2.mlstatic.com/D_NQ_NP_633416-MLA69324634881_052023-O.webp"><div class="info"><h2>Cabo recarga de bateria</h2><p>Famastil</p><div class="preco">R$ 39,50</div></div></div>
-<div class="produto"><img src="https://unipega.com/wp-content/uploads/2025/02/limpa-contato-spray-300ml170g-unipega-c2v043vq2z-kmil8nqzte.webp"><div class="info"><h2>Limpa Contato</h2><p>300ml Unipega</p><div class="preco">R$ 14,50</div></div></div>
-        <div class="produto"><img src="https://spro.vtexassets.com/arquivos/ids/285429/adesivo-durepoxi-cinza-100g-henkel.jpg?v=638640122147700000"><div class="info"><h2>Adesivo Durepoxi</h2><p>100g Henkel</p><div class="preco">R$ 12,00</div></div></div>
-        <div class="produto"><img src="https://cdn.awsli.com.br/800x800/541/541574/produto/232713785/eco-nature-5fbm59z4v8.jpg"><div class="info"><h2>Balde Plástico</h2><p>Eco Nature 18L</p><div class="preco">R$ 21,70</div></div></div>
-        <div class="produto"><img src="https://images.tcdn.com.br/img/img_prod/1324197/escada_residencial_4_deg_p_120kg_960520_alumasa_6313_1_cda18a5065bdab72c24edc7c46e98546.jpg"><div class="info"><h2>Escada Residencial</h2><p>Alumasa 120kg</p><div class="preco">R$ 180,00</div></div></div>
-        <div class="produto"><img src="https://images.tcdn.com.br/img/img_prod/693228/bomba_de_ar_manual_navy_pro_10899_1_46f6c1e64b4f9385d83789dc935d5690.jpg"><div class="info"><h2>Bomba de Ar manual</h2><p>Navy Pro</p><div class="preco">R$ 23,50</div></div></div>
-        <div class="produto"><img src="https://anhangueraferramentas.fbitsstatic.net/img/p/caixa-plastica-para-ferramentas-14-com-bandeja-vd-1002-vonder-109358/298356-4.jpg?w=650&h=650&v=202507240943"><div class="info"><h2>Caixa Plástica Organizadora</h2><p>Vonder</p><div class="preco">R$ 55,50</div></div></div>
+        <div class="produto">
+          <img src="https://images.tcdn.com.br/img/img_prod/1168655/desengripante_spray_chemicolor_lub_orange_250ml_7623_1_d85f52e1604a86925fb9034f14c2a992.jpg" alt="Desengripante">
+          <div class="info">
+            <h2>Desengripante Spray</h2>
+            <p>250ml Chemicolor</p>
+            <div class="preco">R$ 6,50</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://fixafioferramentas.com.br/wp-content/uploads/2024/03/15257656254_3126203.jpg" alt="Espuma">
+          <div class="info">
+            <h2>Espuma Expansiva</h2>
+            <p>Prime top</p>
+            <div class="preco">R$ 18,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://images.tcdn.com.br/img/img_prod/1303015/fogareiro_portatil_de_acendimento_automatico_atopy_677_1_619d87155bbb0582ce20bc164b7ae37e.jpg" alt="Fogareiro">
+          <div class="info">
+            <h2>Fogareiro Portátil</h2>
+            <p>Atopy</p>
+            <div class="preco">R$ 143,80</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://invicta.vteximg.com.br/arquivos/ids/171339-480-480/garrafao_termico_pro_3L_vermelho_velvet4.png?v=638772177856600000" alt="Garrafão">
+          <div class="info">
+            <h2>Garrafão Térmico</h2>
+            <p>Invicta Velvet 3L</p>
+            <div class="preco">R$ 43,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://images.tcdn.com.br/img/img_prod/693228/bomba_de_ar_manual_navy_pro_10899_1_46f6c1e64b4f9385d83789dc935d5690.jpg" alt="Bomba Ar">
+          <div class="info">
+            <h2>Bomba de Ar manual</h2>
+            <p>Navy Pro</p>
+            <div class="preco">R$ 23,50</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://http2.mlstatic.com/D_NQ_NP_633416-MLA69324634881_052023-O.webp" alt="Cabo Bateria">
+          <div class="info">
+            <h2>Cabo recarga de bateria</h2>
+            <p>Famastil</p>
+            <div class="preco">R$ 39,50</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://unipega.com/wp-content/uploads/2025/02/limpa-contato-spray-300ml170g-unipega-c2v043vq2z-kmil8nqzte.webp" alt="Limpa Contato">
+          <div class="info">
+            <h2>Limpa Contato</h2>
+            <p>300ml Unipega</p>
+            <div class="preco">R$ 14,50</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://spro.vtexassets.com/arquivos/ids/285429/adesivo-durepoxi-cinza-100g-henkel.jpg?v=638640122147700000" alt="Durepoxi">
+          <div class="info">
+            <h2>Adesivo Durepoxi</h2>
+            <p>100g Henkel</p>
+            <div class="preco">R$ 12,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://cdn.awsli.com.br/800x800/541/541574/produto/232713785/eco-nature-5fbm59z4v8.jpg" alt="Balde">
+          <div class="info">
+            <h2>Balde Plástico</h2>
+            <p>Eco Nature 18L</p>
+            <div class="preco">R$ 21,70</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://images.tcdn.com.br/img/img_prod/1324197/escada_residencial_4_deg_p_120kg_960520_alumasa_6313_1_cda18a5065bdab72c24edc7c46e98546.jpg" alt="Escada">
+          <div class="info">
+            <h2>Escada Residencial</h2>
+            <p>Alumasa 120kg</p>
+            <div class="preco">R$ 180,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://anhangueraferramentas.fbitsstatic.net/img/p/caixa-plastica-para-ferramentas-14-com-bandeja-vd-1002-vonder-109358/298356-4.jpg?w=650&h=650&v=202507240943" alt="Caixa Organizadora">
+          <div class="info">
+            <h2>Caixa Plástica Organizadora</h2>
+            <p>Vonder</p>
+            <div class="preco">R$ 55,50</div>
+          </div>
+        </div>
       </div>
     </section>
- 
-  <!-- Churrasqueiras -->
-<section id="churrasqueiras" class="secao">
-  <div class="catalogo">
 
-    <div class="produto">
-      <img src="https://www.cassol.com.br/pub/media/catalog/product/1/9/1917109_1.jpg">
-      <div class="info">
-        <h2>Churrasqueira "Trio"</h2>
-        <p>Churrasqueira / Forno / Fogão</p>
-        <div class="preco">R$ 3.687,20</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://tfbmsm.vtexassets.com/arquivos/ids/292050-800-auto?v=638953755730470000&width=800&height=auto&aspect=true">
-      <div class="info">
-        <h2>Churrasqueira M</h2>
-        <p>65cm - tijolinho vermelho</p>
-        <div class="preco">R$ 975,30</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://www.cassol.com.br/media/catalog/product/cache/ae23a9b10c9c149bebc298aa7ed9024c/1/9/1917130_1.jpg">
-      <div class="info">
-        <h2>Churrasqueira Predial M</h2>
-        <p>65cm - Lisa</p>
-        <div class="preco">R$ 1.006,30</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://containerdastelhas.com.br/wp-content/uploads/2021/03/churrasqueira-Premium-Revestida-500x500-1-300x300.jpg">
-      <div class="info">
-        <h2>Churrasqueira M</h2>
-        <p>65cm - tijolinho amarelo</p>
-        <div class="preco">R$ 855,50</div>
-      </div>
-    </div>
-
+    <!-- CHURRASQUEIRAS -->
+    <section id="churrasqueiras" class="secao">
+      <div class="catalogo">
         <div class="produto">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6NYCjy-elqrEyUiv21sIvUjCdQxQz4TSfLA&s">
-      <div class="info">
-        <h2>Churrasqueira M</h2>
-        <p>65cm - tijolinho preto granitado</p>
-        <div class="preco">R$ 1.008,50</div>
-      </div>
-    </div>
-
-    <div class="produto">
-      <img src="https://balaroti.fbitsstatic.net/img/p/prolongador-para-churrasqueira-de-concreto-tijolinho-desenhado-vermelho-primus-25x30x30cm-164684/351207.jpg?w=704&h=704&v=202508120504">
-      <div class="info">
-        <h2>Duto prolongador</h2>
-        <p>28cm </p>
-        <div class="preco">R$ 48,00</div>
-      </div>
-    </div>
-
+          <img src="https://www.cassol.com.br/pub/media/catalog/product/1/9/1917109_1.jpg" alt="Churrasqueira Trio">
+          <div class="info">
+            <h2>Churrasqueira "Trio"</h2>
+            <p>Churrasqueira / Forno / Fogão</p>
+            <div class="preco">R$ 3.687,20</div>
+          </div>
+        </div>
         <div class="produto">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdGb5rd0ZXQjbvJkQT8pn9-LdjMn57eamhlw&s">
-      <div class="info">
-        <h2>Variados</h2>
-        <p>Venha conferir</p>
-        <div class="preco">Preço que cabe no seu bolso</div>
+          <img src="https://tfbmsm.vtexassets.com/arquivos/ids/292050-800-auto?v=638953755730470000&width=800&height=auto&aspect=true" alt="Churrasqueira M">
+          <div class="info">
+            <h2>Churrasqueira M</h2>
+            <p>65cm - tijolinho vermelho</p>
+            <div class="preco">R$ 975,30</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://www.cassol.com.br/media/catalog/product/cache/ae23a9b10c9c149bebc298aa7ed9024c/1/9/1917130_1.jpg" alt="Churrasqueira Predial">
+          <div class="info">
+            <h2>Churrasqueira Predial M</h2>
+            <p>65cm - Lisa</p>
+            <div class="preco">R$ 1.006,30</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://containerdastelhas.com.br/wp-content/uploads/2021/03/churrasqueira-Premium-Revestida-500x500-1-300x300.jpg" alt="Churrasqueira Amarela">
+          <div class="info">
+            <h2>Churrasqueira M</h2>
+            <p>65cm - tijolinho amarelo</p>
+            <div class="preco">R$ 855,50</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6NYCjy-elqrEyUiv21sIvUjCdQxQz4TSfLA&s" alt="Churrasqueira Preta">
+          <div class="info">
+            <h2>Churrasqueira M</h2>
+            <p>65cm - tijolinho preto granitado</p>
+            <div class="preco">R$ 1.008,50</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://balaroti.fbitsstatic.net/img/p/prolongador-para-churrasqueira-de-concreto-tijolinho-desenhado-vermelho-primus-25x30x30cm-164684/351207.jpg?w=704&h=704&v=202508120504" alt="Duto">
+          <div class="info">
+            <h2>Duto prolongador</h2>
+            <p>28cm</p>
+            <div class="preco">R$ 48,00</div>
+          </div>
+        </div>
+        <div class="produto">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdGb5rd0ZXQjbvJkQT8pn9-LdjMn57eamhlw&s" alt="Variados">
+          <div class="info">
+            <h2>Variados</h2>
+            <p>Venha conferir</p>
+            <div class="preco">Preço que cabe no seu bolso</div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
- </main>
+    </section>
+
+  </main>
 
   <footer>
     <p>© <span id="ano"></span> Gabiroba Materiais de Construção.</p>
- <p><span id="ano"></span> Rodovia do Contorno, nº56 - Parque Industrial, Cornélio Procópio/PR</p>
- <p><span id="ano"></span> Fone/Whatsapp (43)3523-9131 / (43)99821-0072</p>
+    <p>Rodovia do Contorno, nº56 - Parque Industrial, Cornélio Procópio/PR</p>
+    <p>Fone/Whatsapp (43)3523-9131 / (43)99821-0072</p>
   </footer>
 
   <script>
