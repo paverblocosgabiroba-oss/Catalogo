@@ -189,6 +189,28 @@
     @media (max-width: 360px) {
       header h1 { font-size: 1.3em; }
     }
+
+    .aviso-flutuante {
+  position: sticky;
+  top: 10px;
+  background: #007bff;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  z-index: 1000;
+  text-align: center;
+  margin-bottom: 15px;
+  animation: pulseDesconto 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseDesconto {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+
   </style>
 </head>
   <!-- BOTÃO WHATSAPP FLUTUANTE -->
@@ -959,7 +981,10 @@
 
      <!-- PISCINAS -->
     <section id="Piscinas" class="secao">
-  <div class="catalogo">
+<div class="aviso-flutuante">
+  Aproveite! Na categoria <strong>Piscinas</strong>, pagando no dinheiro você ganha <strong>3% de desconto extra</strong> sobre o valor à vista.
+</div>
+      <div class="catalogo">
         <div class="produto">
           <img loading="lazy" src="https://images.tcdn.com.br/img/img_prod/639384/algicida_choque_hcl_1_lt_1063palg_a_hidroall_321_1_cd8c0093461335af760bd1de4ff3bd5d.jpg" alt="Algicida de Choque HCL">
           <div class="info">
