@@ -156,28 +156,11 @@
     }
 
     /* RESPONSIVO */
-   @media (min-width: 1024px) {
-  .catalogo { 
-    grid-template-columns: repeat(4, 1fr); 
-  }
-
-  header { 
-    padding: 60px 20px 30px; 
-    min-height: 300px;
-
-    background-size: 700px; /* controla tamanho da logo */
-    background-position: center 30%;
-
-    justify-content: flex-end;
-  }
-
-  header h1 { 
-    font-size: 2.2em; 
-  }
-
-  header p { 
-    font-size: 1.1em; 
-  }
+@media (min-width: 1024px) { 
+  .catalogo { grid-template-columns: repeat(4, 1fr); } 
+  header { padding: 180px 20px; min-height: 500px; } 
+  header h1 { font-size: 2.5em; } 
+  header p { font-size: 1.2em; } 
 }
 
     @media (min-width: 768px) and (max-width: 1023px) {
